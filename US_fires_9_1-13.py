@@ -21,6 +21,8 @@ data = [
         "lat": latitudes,
         "text": brightnesses,
         "marker": {
+            #Make marker size the same for each fire and more visible
+            "size": [20 for fire in brightnesses],
             "color": brightnesses,
             "colorscale": "Viridis",
             "reversescale": True,
@@ -29,6 +31,7 @@ data = [
     }
 ]
 #Create graph
-my_layout = Layout(title="US Fires - 9/1/2020 Through 9/13/2020")
+#geo_scope limits the scope of the map to the United States
+my_layout = Layout(title="US Fires - 9/1/2020 Through 9/13/2020", geo_scope = 'usa')
 fig = {"data": data, "layout": my_layout}
 offline.plot(fig, filename="us_fires_from_sep1-sep13.html")
